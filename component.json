@@ -1,0 +1,8 @@
+{
+  "name": "pollo",
+  "version": "0.0.1",
+  "main": "./lib/pollo.js",
+  "dependencies": {
+    "jquery": "latest"
+  }
+}

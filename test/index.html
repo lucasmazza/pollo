@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Pollo - tests</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="mocha.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="mocha.js"></script>
+    <script src="chai.js"></script>
+    <script src="sinon.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="jquery.js"></script>
+    <script src="pollo.js"></script>
+    <script src="tests.js"></script>
+    <script>
+      mocha.globals([ 'script*', 'setTimeout', 'setInterval', 'clearTimeout', 'clearInterval', 'XMLHttpRequest' ]).run();
+    </script>
+  </body>
+</html>
