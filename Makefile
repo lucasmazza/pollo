@@ -1,5 +1,4 @@
-
 test:
-	@./node_modules/.bin/serve test
+	@python -m SimpleHTTPServer
 
 .PHONY: test

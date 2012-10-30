@@ -16,3 +16,14 @@ pollo.on('sucess', function(event, xhr) {
 // Start the polling.
 pollo.start();
 ```
+
+## Running tests
+
+Use [bower](http://twitter.github.com/bower/) to get Pollo dependencies running, [mocha](https://visionmedia.github.com/mocha), [chai.js](http://chaijs.com) and [jQuery](http://jquery.com).
+
+```
+$ bower install jquery chai mocha
+$ make test
+```
+
+Now open [http://localhost:8000](http://localhost:8000) in your browser.
