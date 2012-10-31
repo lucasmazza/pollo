@@ -1,9 +1,9 @@
 var expect = chai.expect;
 
-describe('Pollo', function() {
+describe('Pollo callbacks', function() {
   beforeEach(function() {
     this.server = sinon.fakeServer.create();
-    this.clock = sinon.useFakeTimers();
+    // this.clock = sinon.useFakeTimers();
 
     this.server.respondWith(/\/success/, function (xhr, id) {
         xhr.respond(200, { "Content-Type": "application/json" }, '{"ok":true}');
@@ -18,7 +18,7 @@ describe('Pollo', function() {
 
   afterEach(function() {
     this.server.restore();
-    this.clock.restore();
+    // this.clock.restore();
     this.pollo.stop();
   });
 
