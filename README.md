@@ -10,6 +10,8 @@ Pollo is distributed through the [bower](http://twitter.github.com/bower/) packa
 bower install pollo
 ```
 
+Otherwise you can download the minified version - `pollo.min.js` - located in this repository.
+
 ## Usage
 
 ```javascript
