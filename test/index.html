@@ -9,8 +9,12 @@
     <script src="../components/mocha/mocha.js"></script>
     <script src="../components/chai/chai.js"></script>
     <script src="support/sinon.js"></script>
-    <script>mocha.setup('bdd')</script>
     <script src="../components/jquery/jquery.js"></script>
+    <script src="support/zepto.min.js"></script>
+    <script>
+      window.adapters = ['jQuery', 'Zepto'];
+      mocha.setup('bdd');
+    </script>
     <script src="../lib/pollo.js"></script>
     <script src="callbacks.js"></script>
     <script src="timer.js"></script>

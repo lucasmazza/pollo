@@ -1,72 +1,82 @@
 var expect = chai.expect;
 
-describe('Pollo callbacks', function() {
-  beforeEach(function() {
-    this.server = sinon.fakeServer.create();
-    // this.clock = sinon.useFakeTimers();
+for (var i = window.adapters.length - 1; i >= 0; i--){
+  var name = window.adapters[i],
+      $    = window[name];
 
-    this.server.respondWith(/\/success/, function (xhr, id) {
-        xhr.respond(200, { "Content-Type": "application/json" }, '{"ok":true}');
+  describe('Pollo callbacks with ' + name, function() {
+    beforeEach(function() {
+      this.server = sinon.fakeServer.create();
+      // this.clock = sinon.useFakeTimers();
+
+      this.server.respondWith(/\/success/, function (xhr, id) {
+          xhr.respond(200, { "Content-Type": "application/json" }, '{"ok":true}');
+      });
+
+      this.server.respondWith(/\/fail/, function (xhr, id) {
+          xhr.respond(404, { "Content-Type": "application/json" }, '{"ok":false}');
+      });
+
+      this.pollo = new Pollo('/success', 0);
     });
 
-    this.server.respondWith(/\/fail/, function (xhr, id) {
-        xhr.respond(404, { "Content-Type": "application/json" }, '{"ok":false}');
+    it("uses " + name, function() {
+      expect(window[name]).to.equal($);
     });
 
-    this.pollo = new Pollo('/success', 0);
-  });
-
-  afterEach(function() {
-    this.server.restore();
-    // this.clock.restore();
-    this.pollo.stop();
-  });
-
-  it("triggers 'success' and 'done' callbacks when the request is finished", function(done) {
-    var success = sinon.spy();
-    var finished = sinon.spy();
-
-    this.pollo.on('success', success);
-    this.pollo.on('done', finished)
-
-    this.pollo.on('done', function() {
-      expect(success.called).to.equal(true);
-      expect(finished.called).to.equal(true);
-      done();
+    afterEach(function() {
+      this.server.restore();
+      // this.clock.restore();
+      this.pollo.stop();
     });
 
-    this.pollo.start();
-    this.server.respond();
-  });
+    it("triggers 'success' and 'done' callbacks when the request is finished", function(done) {
+      var success = sinon.spy();
+      var finished = sinon.spy();
 
-  it("triggers 'before' callbacks before firing the request", function(done) {
-    var before = sinon.spy();
-    this.pollo.on('before', before);
+      this.pollo.on('success', success);
+      this.pollo.on('done', finished)
 
-    this.pollo.on('done', function() {
-      expect(before.called).to.equal(true);
-      done();
+      this.pollo.on('done', function() {
+        expect(success.called).to.equal(true);
+        expect(finished.called).to.equal(true);
+        done();
+      });
+
+      this.pollo.start();
+      this.server.respond();
     });
 
-    this.pollo.start();
-    this.server.respond();
-  });
+    it("triggers 'before' callbacks before firing the request", function(done) {
+      var before = sinon.spy();
+      this.pollo.on('before', before);
 
-  it("triggers only the 'done' callback when the request fails", function(done) {
-    this.pollo = new Pollo('/fail', 0);
-    var success = sinon.spy();
-    var finished = sinon.spy();
+      this.pollo.on('done', function() {
+        expect(before.called).to.equal(true);
+        done();
+      });
 
-    this.pollo.on('success', success);
-    this.pollo.on('done', finished)
-
-    this.pollo.on('done', function() {
-      expect(success.called).to.equal(false);
-      expect(finished.called).to.equal(true);
-      done();
+      this.pollo.start();
+      this.server.respond();
     });
 
-    this.pollo.start();
-    this.server.respond();
+    it("triggers only the 'done' callback when the request fails", function(done) {
+      this.pollo = new Pollo('/fail', 0);
+      var success = sinon.spy();
+      var finished = sinon.spy();
+
+      this.pollo.on('success', success);
+      this.pollo.on('done', finished)
+
+      this.pollo.on('done', function() {
+        expect(success.called).to.equal(false);
+        expect(finished.called).to.equal(true);
+        done();
+      });
+
+      this.pollo.start();
+      this.server.respond();
+    });
   });
-});
+};
+

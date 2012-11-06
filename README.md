@@ -1,6 +1,6 @@
 # Pollo: a simple polling utility
 
-**Pollo** is a simple polling utility that replays Ajax interactions with `jQuery.ajax` and `setTimeout`.
+**Pollo** is a simple polling utility that replays Ajax interactions with `jQuery`/`Zepto` and `setTimeout`.
 
 ## Installation
 
@@ -38,7 +38,7 @@ bower install jquery chai mocha
 make test
 ```
 
-Now open [http://localhost:8000](http://localhost:8000) in your browser and have fun.
+Now open [http://localhost:8000](http://localhost:8000/test/) in your browser and have fun.
 
 ## License
 
