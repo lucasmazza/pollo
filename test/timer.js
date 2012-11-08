@@ -6,14 +6,11 @@ for (var i = window.adapters.length - 1; i >= 0; i--){
 
   describe('Pollo timer with ' + name, function() {
     beforeEach(function() {
-      // this.clock = sinon.useFakeTimers();
-
       this.pollo = new Pollo('/test/endpoint.json', 0);
     });
 
     afterEach(function() {
-      // this.clock.restore();
-      this.pollo.stop();
+      this.pollo.abort();
     });
 
     it("uses " + name, function() {

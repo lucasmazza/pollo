@@ -7,7 +7,6 @@ for (var i = window.adapters.length - 1; i >= 0; i--){
   describe('Pollo callbacks with ' + name, function() {
     beforeEach(function() {
       this.server = sinon.fakeServer.create();
-      // this.clock = sinon.useFakeTimers();
 
       this.server.respondWith(/\/success/, function (xhr, id) {
           xhr.respond(200, { "Content-Type": "application/json" }, '{"ok":true}');
@@ -26,8 +25,7 @@ for (var i = window.adapters.length - 1; i >= 0; i--){
 
     afterEach(function() {
       this.server.restore();
-      // this.clock.restore();
-      this.pollo.stop();
+      this.pollo.abort();
     });
 
     it("triggers 'success' and 'done' callbacks when the request is finished", function(done) {
