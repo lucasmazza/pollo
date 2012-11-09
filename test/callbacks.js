@@ -3,7 +3,7 @@ var expect = chai.expect;
 for (var i = window.adapters.length - 1; i >= 0; i--){
   var name = window.adapters[i],
       $    = window[name];
-
+  console.log(name);
   describe('Pollo callbacks with ' + name, function() {
     beforeEach(function() {
       this.server = sinon.fakeServer.create();
@@ -69,6 +69,17 @@ for (var i = window.adapters.length - 1; i >= 0; i--){
       this.pollo.on('done', function() {
         expect(success.called).to.equal(false);
         expect(finished.called).to.equal(true);
+        done();
+      });
+
+      this.pollo.start();
+      this.server.respond();
+    });
+
+    it("supplies the proper arguments from the ajax request", function(done) {
+      this.pollo.on('success', function(e, json, status, xhr) {
+        expect(json.ok).to.equal(true);
+        expect(status).to.equal("success");
         done();
       });
 
