@@ -1,0 +1,16 @@
+{
+  "name": "pollo",
+  "version": "0.0.2",
+  "main": "./lib/pollo.js",
+  "dependencies": {
+    "jquery": "latest"
+  },
+  "ignore": [
+    "Makefile",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
