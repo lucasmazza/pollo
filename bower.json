@@ -1,9 +1,13 @@
 {
   "name": "pollo",
   "version": "0.0.2",
-  "main": "./lib/pollo.js",
+  "main": ["./src/pollo.js", "./pollo.min.js"],
   "dependencies": {
     "jquery": "latest"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "chai": "latest"
   },
   "ignore": [
     "Makefile",

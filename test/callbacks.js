@@ -3,7 +3,7 @@ var expect = chai.expect;
 for (var i = window.adapters.length - 1; i >= 0; i--){
   var name = window.adapters[i],
       $    = window[name];
-  console.log(name);
+
   describe('Pollo callbacks with ' + name, function() {
     beforeEach(function() {
       this.server = sinon.fakeServer.create();
@@ -64,7 +64,7 @@ for (var i = window.adapters.length - 1; i >= 0; i--){
       var finished = sinon.spy();
 
       this.pollo.on('success', success);
-      this.pollo.on('done', finished)
+      this.pollo.on('done', finished);
 
       this.pollo.on('done', function() {
         expect(success.called).to.equal(false);

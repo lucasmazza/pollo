@@ -2,23 +2,23 @@
   <head>
     <title>Pollo - tests</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="../components/mocha/mocha.css" />
+    <link rel="stylesheet" href="/bower_components/mocha/mocha.css" />
   </head>
   <body>
     <div id="mocha"></div>
-    <script src="../components/mocha/mocha.js"></script>
-    <script src="../components/chai/chai.js"></script>
-    <script src="support/sinon.js"></script>
-    <script src="../components/jquery/jquery.js"></script>
-    <script src="support/zepto.min.js"></script>
+    <script src="/bower_components/mocha/mocha.js"></script>
+    <script src="/bower_components/chai/chai.js"></script>
+    <script src="/test/support/sinon.js"></script>
+    <script src="/bower_components/jquery/jquery.js"></script>
+    <script src="/test/support/zepto.min.js"></script>
     <script>
       window.adapters = ['jQuery', 'Zepto'];
       mocha.setup('bdd');
     </script>
-    <script src="../lib/pollo.js"></script>
-    <script src="callbacks.js"></script>
-    <script src="timer.js"></script>
-    <script src="abort.js"></script>
+    <script src="/src/pollo.js"></script>
+    <script src="/test/callbacks.js"></script>
+    <script src="/test/timer.js"></script>
+    <script src="/test/abort.js"></script>
     <script>
       mocha.globals([ 'script*', 'setTimeout', 'setInterval', 'clearTimeout', 'clearInterval', 'XMLHttpRequest' ]).run();
     </script>
