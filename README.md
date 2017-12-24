@@ -31,7 +31,7 @@ pollo.start();
 
 ## Running tests
 
-Use [bower](http://twitter.github.com/bower/) to get Pollo dependencies running, [Mocha](http://visionmedia.github.com/mocha/), [chai.js](http://chaijs.com) and [jQuery](http://jquery.com). Then use `make` to start a simple web server on the project root:
+Use [bower](http://twitter.github.com/bower/) to get Pollo dependencies running, [Mocha](http://mochajs.org/), [chai.js](http://chaijs.com) and [jQuery](http://jquery.com). Then use `make` to start a simple web server on the project root:
 
 ```
 bower install jquery chai mocha
